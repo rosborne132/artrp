@@ -1,9 +1,9 @@
 export const warmups = [
-  {
-    category: '',
-    description: '',
-    refImage: '',
-    refLink: '',
-    title: '',
-  }
-]
+	{
+		category: '',
+		description: '',
+		refImage: '',
+		refLink: '',
+		title: ''
+	}
+];

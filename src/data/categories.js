@@ -1,6 +1,1 @@
-export const categories = [
-  'basics',
-  'shapes',
-  'perspective',
-  'gesture'
-];
+export const categories = ['basics', 'shapes', 'perspective', 'gesture'];
