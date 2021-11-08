@@ -10,7 +10,7 @@
 	<div class="container flex space-x-7">
 		<header>
 			<a href="/" class="flex items-center py-4 px-2">
-				<h2 class="font-semibold">Navigation</h2>
+				<h2 class="font-semibold">Draw-App</h2>
 			</a>
 		</header>
 

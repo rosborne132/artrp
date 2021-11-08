@@ -1,4 +1,4 @@
-export const warmups = [
+export const warmUps = [
 	{
 		category: '',
 		description: '',
