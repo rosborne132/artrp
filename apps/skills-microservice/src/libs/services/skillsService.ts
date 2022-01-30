@@ -39,6 +39,24 @@ export class SkillsService {
   }
 
   /**
+   * Returns 'OK' when the users skills have been removed from the DB.
+   *
+   * @param event - httpApi event
+   * @returns String
+   *
+   */
+  async deleteSkills({ pathParameters }): Promise<String> {
+    if (!pathParameters.id) throw new Error("Invalid request");
+
+    try {
+      await this.dbService.deleteItem(pathParameters.id);
+      return 'OK'
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  /**
    * Returns the skills for a given user.
    *
    * @param event - httpApi event
