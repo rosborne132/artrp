@@ -1,5 +1,4 @@
 // @ts-nocheck
-
 import { useState, useEffect } from "react";
 
 export async function fetchUser(cookie = "") {
@@ -16,6 +15,7 @@ export async function fetchUser(cookie = "") {
   }
 
   const json = await res.json();
+
   if (typeof window !== "undefined") {
     window.__user = json;
   }
@@ -35,9 +35,8 @@ export function useFetchUser({ required } = {}) {
 
   useEffect(
     () => {
-      if (!loading && user) {
-        return;
-      }
+      if (!loading && user) return;
+
       setLoading(true);
       let isMounted = true;
 

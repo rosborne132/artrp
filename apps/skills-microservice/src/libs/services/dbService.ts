@@ -12,7 +12,7 @@ export class DbService {
    *
    * @param primaryKey - Primary key of record
    * @param item - item body
-   * @returns A brand new dynamo record
+   * @returns A brand-new dynamo record
    *
    */
   async createItem(primaryKey: string, item: any) {
