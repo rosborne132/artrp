@@ -35,7 +35,7 @@ provider:
         - dynamodb:Query
         - dynamodb:GetItem
         - dynamodb:PutItem
-        # - dynamodb:DeleteItem
+        - dynamodb:DeleteItem
       Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.SKILLS_TABLE}"
 
 functions:
@@ -50,6 +50,12 @@ functions:
     events:
       - httpApi:
           method: post
+          path: /skills/{id}
+  deleteSkills:
+    handler: src/functions/index.deleteSkills
+    events:
+      - httpApi:
+          method: delete
           path: /skills/{id}
 
 resources:
