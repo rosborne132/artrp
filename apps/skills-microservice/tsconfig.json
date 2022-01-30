@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "lib": ["ESNEXT"],
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "build",
+    "removeComments": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "target": "ES5"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": [
+    ".build/**/*",
+    ".dynamodb/**/*",
+    "node_modules/**/*",
+    ".serverless/**/*",
+    "_warmup/**/*",
+    ".vscode/**/*"
+  ]
+}

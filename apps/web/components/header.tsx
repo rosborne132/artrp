@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 export default function ({ user, loading }) {
   return (
@@ -60,5 +60,5 @@ export default function ({ user, loading }) {
         }
       `}</style>
     </header>
-  )
+  );
 }
