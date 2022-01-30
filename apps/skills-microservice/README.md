@@ -1,21 +1,28 @@
 # Skills Microservice
 
-## Installation/deployment instructions
+The Skills Microservice is a basic serverless API that performs CRUD operations on a users skills. 
+
+## Architecture
+
+![Skills Service](./assets/skills-service.png)
+
+## Installation / Deployment Instructions
+
+Follow the instructions below to run the api locally.
+
+- Run `npm i` to install the project dependencies
+- Run `npm install -g serverless` to install the serverless framework
+- Rename template.env to .env.local
+- Run `sls dynamodb install` to install the local version of dynamodb
+- Run `sls dynamodb start` to start up local dynamodb instance
+- 
 
 Follow the instructions below to deploy your project.
 
 - Run `npm i` to install the project dependencies
 - Run `npx sls deploy` to deploy this stack to AWS
-- Run `sls dynamodb install` to install the local version of dynamodb
-- Run `sls dynamodb start` to start up local dynamodb instance
 
-## Test your service
-
-### Locally
-
-In order to test the hello function locally, run the following command:
-
-- `npx sls invoke local -f hello --path src/functions/hello/mock.json` if you're using NPM
+## Testing The Service
 
 ### Remotely
 
