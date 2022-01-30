@@ -76,13 +76,13 @@ export class DbService {
           "#skills": "skills",
         },
         ExpressionAttributeValues: {
-          "#skills": item,
+          ":skills": item,
         },
-        ReturnValue: "ALL_NEW",
+        ReturnValues: "ALL_NEW",
       };
       const data = await this.dbClient.update(params).promise();
 
-      return data.Item;
+      return data.Attributes;
     } catch (err) {
       throw new Error(err.message);
     }
