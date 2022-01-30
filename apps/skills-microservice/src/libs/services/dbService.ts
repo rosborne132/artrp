@@ -34,6 +34,25 @@ export class DbService {
   }
 
   /**
+   * Deletes a dynamo record for a given primary key
+   *
+   * @param primaryKey - Primary key of record
+   * @returns
+   *
+   */
+  async deleteItem(primaryKey: string) {
+    try {
+      const params = {
+        TableName: this.tableName,
+        Key: { id: primaryKey },
+      };
+      return this.dbClient.delete(params).promise();
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  }
+
+  /**
    * Returns a dynamo record for a given primary key
    *
    * @param primaryKey - Primary key of record
@@ -83,25 +102,6 @@ export class DbService {
       const data = await this.dbClient.update(params).promise();
 
       return data.Attributes;
-    } catch (err) {
-      throw new Error(err.message);
-    }
-  }
-
-  /**
-   * Deletes a dynamo record for a given primary key
-   *
-   * @param primaryKey - Primary key of record
-   * @returns
-   *
-   */
-  async deleteItem(primaryKey: string) {
-    try {
-      const params = {
-        TableName: this.tableName,
-        Key: { id: primaryKey },
-      };
-      return this.dbClient.delete(params).promise();
     } catch (err) {
       throw new Error(err.message);
     }
