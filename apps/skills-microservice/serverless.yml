@@ -32,19 +32,14 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action:
-        - dynamodb:Query
+        - dynamodb:DeleteItem
         - dynamodb:GetItem
         - dynamodb:PutItem
-        - dynamodb:DeleteItem
+        - dynamodb:Query
+        - dynamodb:UpdateItem
       Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.SKILLS_TABLE}"
 
 functions:
-  getSkills:
-    handler: src/functions/index.getSkills
-    events:
-      - httpApi:
-          method: get
-          path: /skills/{id}
   createSkills:
     handler: src/functions/index.createSkills
     events:
@@ -56,6 +51,18 @@ functions:
     events:
       - httpApi:
           method: delete
+          path: /skills/{id}
+  getSkills:
+    handler: src/functions/index.getSkills
+    events:
+      - httpApi:
+          method: get
+          path: /skills/{id}
+  updateSkills:
+    handler: src/functions/index.updateSkills
+    events:
+      - httpApi:
+          method: patch
           path: /skills/{id}
 
 resources:
