@@ -1,1 +1,1 @@
-export * from "./dbClient";
+export * from './dbClient'

@@ -1,5 +1,5 @@
-import { Skill, Skills } from "../types";
-import { experiencePointsByLevel } from '../utils';
+import { Skill, Skills } from '../types'
+import { experiencePointsByLevel } from '../utils'
 
 export class SkillsService {
   constructor(private readonly dbService) {}
@@ -11,7 +11,7 @@ export class SkillsService {
     return {
       level: 1,
       experiencePoints: 0,
-    };
+    }
   }
 
   /**
@@ -23,24 +23,24 @@ export class SkillsService {
    *
    */
   private updateUserSkills(skills, tags): Skills {
-    const updatedUserSkills = { ...skills };
+    const updatedUserSkills = { ...skills }
 
-    tags.forEach(tag => {
-      let experiencePoints = updatedUserSkills[tag].experiencePoints;
-      let level = updatedUserSkills[tag].level;
-      const experiencePointsToNextLevel = experiencePointsByLevel[level];
+    tags.forEach((tag) => {
+      let experiencePoints = updatedUserSkills[tag].experiencePoints
+      let level = updatedUserSkills[tag].level
+      const experiencePointsToNextLevel = experiencePointsByLevel[level]
 
-      experiencePoints += 5;
+      experiencePoints += 5
 
       if (experiencePoints >= experiencePointsToNextLevel) {
-        experiencePoints -= experiencePointsToNextLevel;
-        level += 1;
+        experiencePoints -= experiencePointsToNextLevel
+        level += 1
       }
 
-      updatedUserSkills[tag] = { experiencePoints, level };
-    });
+      updatedUserSkills[tag] = { experiencePoints, level }
+    })
 
-    return updatedUserSkills;
+    return updatedUserSkills
   }
 
   /**
@@ -51,12 +51,12 @@ export class SkillsService {
    *
    */
   async createSkills({ pathParameters }): Promise<Skills> {
-    if (!pathParameters.id) throw new Error("Invalid request");
+    if (!pathParameters.id) throw new Error('Invalid request')
 
     try {
       const payload = {
         skills: {
-          "color-light": this.createStarterSkills(),
+          'color-light': this.createStarterSkills(),
           anatomy: this.createStarterSkills(),
           composition: this.createStarterSkills(),
           construction: this.createStarterSkills(),
@@ -64,10 +64,10 @@ export class SkillsService {
           gesture: this.createStarterSkills(),
           perspective: this.createStarterSkills(),
         },
-      };
-      return this.dbService.createItem(pathParameters.id, payload);
+      }
+      return this.dbService.createItem(pathParameters.id, payload)
     } catch (err) {
-      throw err;
+      throw err
     }
   }
 
@@ -79,13 +79,13 @@ export class SkillsService {
    *
    */
   async deleteSkills({ pathParameters }): Promise<String> {
-    if (!pathParameters.id) throw new Error("Invalid request");
+    if (!pathParameters.id) throw new Error('Invalid request')
 
     try {
-      await this.dbService.deleteItem(pathParameters.id);
+      await this.dbService.deleteItem(pathParameters.id)
       return 'OK'
     } catch (err) {
-      throw err;
+      throw err
     }
   }
 
@@ -97,12 +97,12 @@ export class SkillsService {
    *
    */
   async getSkills({ pathParameters }): Promise<Skills> {
-    if (!pathParameters.id) throw new Error("Invalid request");
+    if (!pathParameters.id) throw new Error('Invalid request')
 
     try {
-      return this.dbService.getItem(pathParameters.id);
+      return this.dbService.getItem(pathParameters.id)
     } catch (err) {
-      throw err;
+      throw err
     }
   }
 
@@ -114,18 +114,18 @@ export class SkillsService {
    *
    */
   async updateSkills({ body, pathParameters }): Promise<Skills> {
-    const { tags } = JSON.parse(body);
+    const { tags } = JSON.parse(body)
 
-    if (!pathParameters.id || !tags) throw new Error("Invalid request");
+    if (!pathParameters.id || !tags) throw new Error('Invalid request')
 
     try {
-      const { skills } = await this.dbService.getItem(pathParameters.id);
-      const payload = this.updateUserSkills(skills, tags);
+      const { skills } = await this.dbService.getItem(pathParameters.id)
+      const payload = this.updateUserSkills(skills, tags)
 
-      return this.dbService.updateItem(pathParameters.id, payload);
+      return this.dbService.updateItem(pathParameters.id, payload)
     } catch (err) {
-      console.error(err);
-      throw err;
+      console.error(err)
+      throw err
     }
   }
 }

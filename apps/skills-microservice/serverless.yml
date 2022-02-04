@@ -37,7 +37,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:Query
         - dynamodb:UpdateItem
-      Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.SKILLS_TABLE}"
+      Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.SKILLS_TABLE}'
 
 functions:
   createSkills:

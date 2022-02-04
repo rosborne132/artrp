@@ -1,10 +1,10 @@
-import { createDbClient } from "../clients";
+import { createDbClient } from '../clients'
 
 export class DbService {
-  private dbClient;
+  private dbClient
 
   constructor(private readonly tableName: string) {
-    this.dbClient = createDbClient();
+    this.dbClient = createDbClient()
   }
 
   /**
@@ -23,13 +23,13 @@ export class DbService {
           id: primaryKey,
           ...item,
         },
-      };
+      }
 
-      await this.dbClient.put(params).promise();
+      await this.dbClient.put(params).promise()
 
-      return params.Item;
+      return params.Item
     } catch (err) {
-      throw new Error(err.message);
+      throw new Error(err.message)
     }
   }
 
@@ -45,12 +45,13 @@ export class DbService {
       const params = {
         TableName: this.tableName,
         Key: { id: primaryKey },
-      };
-      return this.dbClient.delete(params).promise();
+      }
+      return this.dbClient.delete(params).promise()
     } catch (err) {
-      throw new Error(err.message);
+      throw new Error(err.message)
     }
   }
+  65
 
   /**
    * Returns a dynamo record for a given primary key
@@ -66,14 +67,14 @@ export class DbService {
         Key: {
           id: primaryKey,
         },
-      };
-      const data = await this.dbClient.get(params).promise();
+      }
+      const data = await this.dbClient.get(params).promise()
 
-      if (!data || Object.keys(data).length === 0) throw new Error("Not found");
+      if (!data || Object.keys(data).length === 0) throw new Error('Not found')
 
-      return data.Item;
+      return data.Item
     } catch (err) {
-      throw new Error(err.message);
+      throw new Error(err.message)
     }
   }
 
@@ -90,20 +91,20 @@ export class DbService {
       const params = {
         TableName: this.tableName,
         Key: { id: primaryKey },
-        UpdateExpression: "set #skills = :skills",
+        UpdateExpression: 'set #skills = :skills',
         ExpressionAttributeNames: {
-          "#skills": "skills",
+          '#skills': 'skills',
         },
         ExpressionAttributeValues: {
-          ":skills": item,
+          ':skills': item,
         },
-        ReturnValues: "ALL_NEW",
-      };
-      const data = await this.dbClient.update(params).promise();
+        ReturnValues: 'ALL_NEW',
+      }
+      const data = await this.dbClient.update(params).promise()
 
-      return data.Attributes;
+      return data.Attributes
     } catch (err) {
-      throw new Error(err.message);
+      throw new Error(err.message)
     }
   }
 }

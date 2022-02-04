@@ -1,9 +1,9 @@
-import React from "react";
-import Modal from "react-modal";
+import React from 'react'
+import Modal from 'react-modal'
 
-import Layout from "../components/layout";
+import Layout from '../components/layout'
 
-import { useFetchUser } from "../lib/user";
+import { useFetchUser } from '../lib/user'
 
 function ProfileCard({ user }) {
   return (
@@ -12,12 +12,12 @@ function ProfileCard({ user }) {
       <p>nickname: {user.nickname}</p>
       <p>name: {user.name}</p>
     </div>
-  );
+  )
 }
 
 export default function App({ images, skills }) {
-  const { user, loading } = useFetchUser({ required: true });
-  const [showModal, setShowModal]: any = React.useState(false);
+  const { user, loading } = useFetchUser({ required: true })
+  const [showModal, setShowModal]: any = React.useState(false)
 
   return (
     <Layout user={user} loading={loading}>
@@ -48,32 +48,32 @@ export default function App({ images, skills }) {
         </>
       )}
     </Layout>
-  );
+  )
 }
 
 App.getInitialProps = async () => {
   // Get Skills by userId
   const skills = [
     {
-      id: "gsdfbe-39-xsdf",
-      title: "design",
+      id: 'gsdfbe-39-xsdf',
+      title: 'design',
       level: 1,
       experiencePoints: 43,
       experienceToNextLevel: 100,
     },
     {
-      id: "asdg-we3db-sd",
-      title: "color-light",
+      id: 'asdg-we3db-sd',
+      title: 'color-light',
       level: 1,
       experiencePoints: 43,
       experienceToNextLevel: 100,
     },
-  ];
+  ]
 
   // Get images
   const images = [
-    { id: "asdf-fn2jdf-asdf13tb", imageUrl: "https://some-image-url.com" },
-  ];
+    { id: 'asdf-fn2jdf-asdf13tb', imageUrl: 'https://some-image-url.com' },
+  ]
 
-  return { images, skills };
-};
+  return { images, skills }
+}
