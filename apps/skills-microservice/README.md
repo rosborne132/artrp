@@ -1,6 +1,6 @@
 # Skills Microservice
 
-The Skills Microservice is a basic serverless API that performs CRUD operations on a users skills. 
+The Skills Microservice is a basic serverless API that performs CRUD operations on a users skills.
 
 ## Architecture
 
@@ -15,7 +15,7 @@ Follow the instructions below to run the api locally.
 - Rename template.env to .env.local
 - Run `sls dynamodb install` to install the local version of dynamodb
 - Run `sls dynamodb start` to start up local dynamodb instance
-- 
+-
 
 Follow the instructions below to deploy your project.
 
