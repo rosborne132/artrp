@@ -11,9 +11,11 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "test": "turbo run test --concurrency=1 --parallel",
     "prepare": "husky install"
   },
   "devDependencies": {
+    "@types/jest": "^27.4.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.3",
     "prettier": "2.5.1",
@@ -23,6 +25,7 @@
     "pipeline": {
       "build": {
         "dependsOn": [
+          "^test",
           "^build"
         ],
         "outputs": [
@@ -32,6 +35,12 @@
         ]
       },
       "lint": {
+        "outputs": []
+      },
+      "test": {
+        "dependsOn": [
+          "^build"
+        ],
         "outputs": []
       },
       "dev": {

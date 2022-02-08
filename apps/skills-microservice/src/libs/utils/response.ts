@@ -1,7 +1,9 @@
-const errorMsgMap = {
-  'Invalid request': 400,
-  'Requested resource not found': 400,
-  'Not found': 404,
+import { httpResponseCode } from './constants'
+
+export const errorMsgMap = {
+  'Invalid request': httpResponseCode.INVALID_REQUEST,
+  'Requested resource not found': httpResponseCode.INVALID_REQUEST,
+  'Not found': httpResponseCode.NOT_FOUND,
 }
 
 export const buildResponse = (statusCode: number, body: any) => ({
