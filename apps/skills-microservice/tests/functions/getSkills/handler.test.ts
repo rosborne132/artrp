@@ -1,5 +1,5 @@
 import { getSkills } from '../../../src/functions'
-import { httpResponseCode, errorMsgMap, SkillsService } from '../../../src/libs'
+import { errorMsgMap, httpResponseCode, SkillsService } from '../../../src/libs'
 
 describe('getSkills tests', () => {
   test('should return 200 with successful payload', async () => {
