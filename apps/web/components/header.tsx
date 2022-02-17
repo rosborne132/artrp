@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function ({ user, loading }) {
+export default function Header({ user, loading }) {
   return (
     <header>
       <nav>
