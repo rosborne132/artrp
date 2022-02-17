@@ -1,4 +1,4 @@
-import { buildErrorResponse, buildResponse } from '../../libs'
+import { buildErrorResponse, buildResponse, httpResponseCode } from '../../libs'
 import { DbService, SkillsService } from '../../libs/services'
 
 const tableName = process.env.SKILLS_TABLE ?? 'skills_dev'
@@ -8,7 +8,7 @@ const skillsService = new SkillsService(dbService)
 export const createSkills = async (event) => {
   try {
     const data = await skillsService.createSkills(event)
-    return buildResponse(201, data)
+    return buildResponse(httpResponseCode.CREATED, data)
   } catch (err) {
     return buildErrorResponse(err.message)
   }

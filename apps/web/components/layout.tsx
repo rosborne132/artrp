@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Header from './header'
 
-export default function ({ user, loading = false, children }) {
+export default function Layout({ user, loading = false, children }) {
   return (
     <>
       <Head>

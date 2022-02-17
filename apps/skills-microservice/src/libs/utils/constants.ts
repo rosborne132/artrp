@@ -20,3 +20,10 @@ export const experiencePointsByLevel = {
   19: 350,
   20: 360,
 }
+
+export const httpResponseCode = {
+  CREATED: 201,
+  INVALID_REQUEST: 400,
+  NOT_FOUND: 404,
+  SUCCESS: 200,
+}

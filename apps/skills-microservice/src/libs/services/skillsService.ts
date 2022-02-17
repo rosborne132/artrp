@@ -26,6 +26,8 @@ export class SkillsService {
     const updatedUserSkills = { ...skills }
 
     tags.forEach((tag) => {
+      if (updatedUserSkills[tag] === undefined) return
+
       let experiencePoints = updatedUserSkills[tag].experiencePoints
       let level = updatedUserSkills[tag].level
       const experiencePointsToNextLevel = experiencePointsByLevel[level]
@@ -51,7 +53,7 @@ export class SkillsService {
    *
    */
   async createSkills({ pathParameters }): Promise<Skills> {
-    if (!pathParameters.id) throw new Error('Invalid request')
+    if (!pathParameters?.id) throw new Error('Invalid request')
 
     try {
       const payload = {
@@ -79,7 +81,7 @@ export class SkillsService {
    *
    */
   async deleteSkills({ pathParameters }): Promise<String> {
-    if (!pathParameters.id) throw new Error('Invalid request')
+    if (!pathParameters?.id) throw new Error('Invalid request')
 
     try {
       await this.dbService.deleteItem(pathParameters.id)
@@ -97,7 +99,7 @@ export class SkillsService {
    *
    */
   async getSkills({ pathParameters }): Promise<Skills> {
-    if (!pathParameters.id) throw new Error('Invalid request')
+    if (!pathParameters?.id) throw new Error('Invalid request')
 
     try {
       return this.dbService.getItem(pathParameters.id)
@@ -114,17 +116,17 @@ export class SkillsService {
    *
    */
   async updateSkills({ body, pathParameters }): Promise<Skills> {
-    const { tags } = JSON.parse(body)
+    const parsedBody = JSON.parse(body ?? JSON.stringify({}))
 
-    if (!pathParameters.id || !tags) throw new Error('Invalid request')
+    if (!pathParameters?.id || !parsedBody?.tags)
+      throw new Error('Invalid request')
 
     try {
       const { skills } = await this.dbService.getItem(pathParameters.id)
-      const payload = this.updateUserSkills(skills, tags)
+      const payload = this.updateUserSkills(skills, parsedBody.tags)
 
       return this.dbService.updateItem(pathParameters.id, payload)
     } catch (err) {
-      console.error(err)
       throw err
     }
   }

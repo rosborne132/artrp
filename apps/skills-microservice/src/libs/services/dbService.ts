@@ -37,7 +37,7 @@ export class DbService {
    * Deletes a dynamo record for a given primary key
    *
    * @param primaryKey - Primary key of record
-   * @returns
+   * @returns void
    *
    */
   async deleteItem(primaryKey: string) {
@@ -46,12 +46,11 @@ export class DbService {
         TableName: this.tableName,
         Key: { id: primaryKey },
       }
-      return this.dbClient.delete(params).promise()
+      await this.dbClient.delete(params).promise()
     } catch (err) {
       throw new Error(err.message)
     }
   }
-  65
 
   /**
    * Returns a dynamo record for a given primary key
