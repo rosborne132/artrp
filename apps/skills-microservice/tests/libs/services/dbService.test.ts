@@ -31,7 +31,7 @@ describe('dbService tests', () => {
       try {
         await dbService.createItem('testKey', {})
       } catch (err) {
-        expect(err.message).toEqual(errorMsg)
+        expect(err.message).toBe(errorMsg)
       }
     })
   })
@@ -62,7 +62,7 @@ describe('dbService tests', () => {
       try {
         await dbService.deleteItem('testKey')
       } catch (err) {
-        expect(err.message).toEqual(errorMsg)
+        expect(err.message).toBe(errorMsg)
       }
     })
   })
@@ -112,7 +112,7 @@ describe('dbService tests', () => {
       try {
         await dbService.getItem('testKey')
       } catch (err) {
-        expect(err.message).toEqual(errorMsg)
+        expect(err.message).toBe(errorMsg)
       }
     })
   })
@@ -145,7 +145,7 @@ describe('dbService tests', () => {
       try {
         await dbService.updateItem('testKey', {})
       } catch (err) {
-        expect(err.message).toEqual(errorMsg)
+        expect(err.message).toBe(errorMsg)
       }
     })
   })

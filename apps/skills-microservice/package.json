@@ -9,7 +9,8 @@
     "test": "jest -c jest.config.ts --runInBand"
   },
   "dependencies": {
-    "aws-sdk": "^2.1058.0"
+    "aws-sdk": "^2.1058.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@serverless/typescript": "^2.16.0",
