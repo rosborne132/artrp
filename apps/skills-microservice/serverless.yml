@@ -1,5 +1,4 @@
-service:
-  name: skills-microservice
+service: skills-microservice
 
 plugins:
   - serverless-dynamodb-local
