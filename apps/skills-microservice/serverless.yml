@@ -1,5 +1,7 @@
 service: skills-microservice
 
+frameworkVersion: '3'
+
 plugins:
   - serverless-dynamodb-local
   - serverless-offline
