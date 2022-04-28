@@ -1,6 +1,6 @@
 # Skills Microservice
 
-The Skills Microservice is a basic serverless API that performs CRUD operations on a users skills.
+The Skills Microservice is a basic serverless API that performs CRUD operations on a user's skills.
 
 ## Architecture
 
@@ -8,14 +8,13 @@ The Skills Microservice is a basic serverless API that performs CRUD operations 
 
 ## Installation / Deployment Instructions
 
-Follow the instructions below to run the api locally.
+Follow the instructions below to run the API locally.
 
 - Run `npm i` to install the project dependencies
 - Run `npm install -g serverless` to install the serverless framework
 - Rename template.env to .env.local
 - Run `sls dynamodb install` to install the local version of dynamodb
 - Run `sls dynamodb start` to start up local dynamodb instance
--
 
 Follow the instructions below to deploy your project.
 
@@ -26,4 +25,8 @@ Follow the instructions below to deploy your project.
 
 ### Remotely
 
-Copy and replace your `url` - found in Serverless `deploy` command output - and `name` parameter in the following `curl` command in your terminal or in Postman
+Copy and replace your `url` - found in Serverless `deploy` command output - and `name` parameter in the following `curl` command in your terminal or Postman
+
+### Running Unit Tests
+
+To run unit tests locally, run `npm test`
