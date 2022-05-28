@@ -16,6 +16,5 @@ jobs:
       - name: Install dependencies
         run: |
           npm install -g next
-          npm install -g serverless
       - run: npm run lint
       - run: npm run test
