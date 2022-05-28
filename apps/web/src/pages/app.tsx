@@ -7,20 +7,11 @@ import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0'
 import Layout from '../components/layout'
 import { ProfileCard } from '../components/profileCard'
 
-// Utilities
-import { fetcher } from '../lib'
-
 export default withPageAuthRequired(function App() {
   const { user, isLoading } = useUser()
   const [skills, setSkills] = React.useState({})
   const [showModal, setShowModal]: any = React.useState(false)
   const [loading, setLoading] = React.useState(true)
-
-  // TODO: Move dynamo table to AWS CDK
-
-  // TODO: Clean up api
-
-  // TODO: Clean up turbo repo
 
   const getSkills = async () => {
     try {
@@ -82,9 +73,6 @@ export default withPageAuthRequired(function App() {
           <ProfileCard user={user} />
 
           <h2>Skills</h2>
-          {/*           {skills.map((skill) => ( */}
-          {/*             <h4 key={skill.id}>{skill.title}</h4> */}
-          {/*           ))} */}
 
           <h2>Latest Artwork</h2>
           {images.map((skill) => (
